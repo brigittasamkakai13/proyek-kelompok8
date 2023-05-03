@@ -2,15 +2,27 @@
 #include<stdlib.h>
 #include<string.h>
 
+#define MAX_USERNAME_LENGTH 20
+#define MAX_PASSWORD_LENGTH 20
+
+struct user {
+    char username[MAX_USERNAME_LENGTH];
+    char password[MAX_PASSWORD_LENGTH];
+
 int main(int banyakArgumen, char *Argumen[]) // ./Main Username Password
 {
-    if(banyakArgumen != 3){
-        printf("Gagal login !");
-        printf("\nCara Penggunaan : ./FleAplikasiProgramUtama username password");
+    if(banyakArgumen < 2){
+        printf("Usage: %s <login.bin>\n", Argumen[0]);
+        exit(1);
     }
 
+    struct user u;
+    char username[MAX_USERNAME_LENGTH];
+    char password[MAX_PASSWORD_LENGTH];
+    int logged_in = 0;
     
-   FILE *fpr;
+    
+   FILE *fpr = fopen(Argumen[1], "ab");
 
    if((fpr = fopen("database/login.bin", "rb")) == NULL){
     printf("Gagal membuka file !");
