@@ -51,6 +51,44 @@ int main(int banyakArgumen, char *Argumen[]) // ./Main Username Password
    
     return 0;
 }
+    if (is_register) {
+    printf("Please login to continue.\n");
+    file = fopen(argv[1], "rb");
+
+    if (file == NULL) {
+        printf("Error opening log file!\n");
+        exit(1);
+    }
+
+    printf("Enter username: ");
+    scanf("%s", username);
+
+    while (fread(&u, sizeof(struct user), 1, file)) {
+        if (strcmp(u.username, username) == 0) {
+            printf("Enter password: ");
+            scanf("%s", password);
+
+            if (strcmp(u.password, password) == 0) {
+                printf("Login successful!\n\n");
+                logged_in = 1;
+                break;
+            } else {
+                printf("Invalid password!\n\n");
+                break;
+            }
+        }
+    }
+
+    if (!logged_in) {
+        printf("User not found!\n");
+    }
+
+    fclose(file);
+}
+
+if (!logged_in) {
+    return 0;
+}
     fclose(file);
 
 printf("Selamat Datang di Game Who wants to be a millionaire, %s!\n\n", u.username);
