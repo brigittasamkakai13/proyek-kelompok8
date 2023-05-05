@@ -23,11 +23,12 @@ int main(int banyakArgumen, char *Argumen[]) // ./Main Username Password
     
     
    FILE *fpr = fopen(Argumen[1], "ab");
-
-   if((fpr = fopen("database/login.bin", "rb")) == NULL){
-    printf("Gagal membuka file !");
-    return EXIT_FAILURE;
+    
+    if (file == NULL) {
+    printf("Error creating log file!\n");
+    exit(1);
    }
+    
 
    char akun[20];
    fread(akun, sizeof(char), sizeof(akun)/sizeof(char), fpr);
