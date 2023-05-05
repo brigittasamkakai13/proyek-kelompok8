@@ -50,6 +50,22 @@ int main(int banyakArgumen, char *Argumen[]) // ./Main Username Password
    printf("Username : %s\nPassword : %s", username, password);
    
     return 0;
+    if (choice == 'y') {
+    is_register = 1;
+
+    printf("Enter username: ");
+    scanf("%s", u.username);
+
+    printf("Enter password: ");
+    scanf("%s", u.password);
+
+    // tulis data pengguna ke file
+    fwrite(&u, sizeof(struct user), 1, file);
+
+    printf("User data has been saved to log file.\n");
+}
+
+fclose(file);
 }
     if (is_register) {
     printf("Please login to continue.\n");
