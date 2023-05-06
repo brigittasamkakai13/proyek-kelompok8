@@ -4,18 +4,19 @@
 
 #define MAX_USERNAME_LENGTH 20
 #define MAX_PASSWORD_LENGTH 20
+#define MAX_QUESTION_LENGTH 100
+#define MAX_ANSWER_LENGTH 50
 
 struct user {
     char username[MAX_USERNAME_LENGTH];
     char password[MAX_PASSWORD_LENGTH];
-
-int main(int banyakArgumen, char *Argumen[]) // ./Main Username Password
-{
-    if(banyakArgumen < 2){
-        printf("Usage: %s <login.bin>\n", Argumen[0]);
-        exit(1);
-    }
-
+    
+struct question {
+char text[MAX_QUESTION_LENGTH];
+char answers[4][MAX_ANSWER_LENGTH];
+int correct_answer;
+};
+    
     struct user u;
     char username[MAX_USERNAME_LENGTH];
     char password[MAX_PASSWORD_LENGTH];
@@ -31,6 +32,10 @@ int main(int banyakArgumen, char *Argumen[]) // ./Main Username Password
     
 
    char akun[20];
+   int is_register = 0;
+   printf("Do you want to register? (y/n): ");
+   char choice;
+   scanf(" %c", &choice);
    fread(akun, sizeof(char), sizeof(akun)/sizeof(char), fpr);
 
    fclose(fpr);
