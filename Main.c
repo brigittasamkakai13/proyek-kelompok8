@@ -17,6 +17,19 @@ char answers[4][MAX_ANSWER_LENGTH];
 int correct_answer;
 };
     
+        void print_question(struct question q) {
+    printf("%s\n", q.text);
+    for (int i = 0; i < 4; i++) {
+    printf("%d. %s\n", i+1, q.answers[i]);
+        }
+    }
+
+    int main(int argc, char *argv[]) {
+    if (argc < 2) {
+    printf("Usage: %s <login.bin>\n", argv[0]);
+    exit(1);
+    }
+    
     struct user u;
     char username[MAX_USERNAME_LENGTH];
     char password[MAX_PASSWORD_LENGTH];
@@ -28,33 +41,14 @@ int correct_answer;
     if (file == NULL) {
     printf("Error creating log file!\n");
     exit(1);
+        
    }
     
-
-   char akun[20];
    int is_register = 0;
    printf("Do you want to register? (y/n): ");
    char choice;
    scanf(" %c", &choice);
-   fread(akun, sizeof(char), sizeof(akun)/sizeof(char), fpr);
-
-   fclose(fpr);
-
-   char *string[3];
-   char username[20], password[20];
-   int ctrl = 0;
-
-   string[0] = strtok(akun, "@");
-   while(string[ctrl++] != NULL){
-    string[ctrl] = strtok(NULL, "@");
-   }
-
-   strcpy(username, string[0]);
-   strcpy(password, string[1]);
-
-   printf("Username : %s\nPassword : %s", username, password);
-   
-    return 0;
+        
     if (choice == 'y') {
     is_register = 1;
 
