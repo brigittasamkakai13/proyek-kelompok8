@@ -17,7 +17,7 @@ char answers[4][MAX_ANSWER_LENGTH];
 int correct_answer;
 };
     
-        void print_question(struct question q) {
+    void print_question(struct question q) {
     printf("%s\n", q.text);
     for (int i = 0; i < 4; i++) {
     printf("%d. %s\n", i+1, q.answers[i]);
