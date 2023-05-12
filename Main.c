@@ -10,7 +10,8 @@
 struct user {
     char username[MAX_USERNAME_LENGTH];
     char password[MAX_PASSWORD_LENGTH];
-    
+};
+
 struct question {
 char text[MAX_QUESTION_LENGTH];
 char answers[4][MAX_ANSWER_LENGTH];
@@ -36,7 +37,7 @@ int correct_answer;
     int logged_in = 0;
     
     
-   FILE *fpr = fopen(Argumen[1], "ab");
+   FILE *file = fopen(argv[1], "ab");
     
     if (file == NULL) {
     printf("Error creating log file!\n");
@@ -65,7 +66,7 @@ int correct_answer;
 }
 
 fclose(file);
-}
+
     if (is_register) {
     printf("Please login to continue.\n");
     file = fopen(argv[1], "rb");
